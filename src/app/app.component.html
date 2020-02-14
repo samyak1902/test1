@@ -1,0 +1,29 @@
+<div class="container">
+  <span style="color: rgb(110, 110, 110);">Drone Direction: </span><button (click)="changeDirection()" class="btn btn-success">{{direction}}</button>
+  <br>
+  <button (click)="reset()">Reset Path</button>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let n of column">
+          <div style="border: 1px solid black; color: rgb(110, 110, 110);" *ngIf="n!=0">C-{{n}}</div>
+          <div *ngIf="n==0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of row">
+        <th>
+          <div style="border: 1px solid black; color: rgb(110, 110, 110);">R-{{m}}</div>
+        </th>
+        <td *ngFor="let n of column">
+          <div style="border: 1px solid black;background-color: rgb(110, 110, 110);" *ngIf="n!=0" (click)=select(m,n) name="cell" id="R{{m}}C{{n}}" align="center">&nbsp;</div>
+          <div *ngIf="n==0"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
